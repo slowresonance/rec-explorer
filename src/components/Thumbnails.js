@@ -85,7 +85,7 @@ const Thumbnails = ({ movieid, users }) => {
             )}
           </>
         ) : (
-          <div className="no-data">Custom Thumbnails Not Available</div>
+          <div className="no-data">Custom Thumbnails not available</div>
         )}
       </div>
     </>
