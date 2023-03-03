@@ -4,16 +4,16 @@ const getImgSrc = (id) => {
   return `https://raw.githubusercontent.com/mohanvpatta/movie-posters/main/${id}-0.jpg`;
 };
 
-const User = ({ user, selectMovie, selectWatchlist, index }) => {
+const User = ({ user, selectMovie, index }) => {
   let { id, ratings } = user;
 
-  const recommendations = ratings.slice(0, 20);
+  const recommendations = ratings.slice(20, 50);
 
   const empty = id === 0;
 
   return (
     <>
-      <div className={`header user-${index + 1}`}>{`${id}'s Feed`}</div>
+      <div className={`header user-${index + 1}`}>{`${id}'s Watchlist`}</div>
       <div className="body movies">
         {recommendations.map((movie, i) => (
           <div
@@ -31,9 +31,6 @@ const User = ({ user, selectMovie, selectWatchlist, index }) => {
             )}
           </div>
         ))}
-      </div>
-      <div className="footer action" onClick={() => selectWatchlist(index)}>
-        Watchlist
       </div>
     </>
   );
