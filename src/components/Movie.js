@@ -37,38 +37,44 @@ const Movie = ({ movie }) => {
 
   return (
     <>
-      {!empty && (
-        <>
-          <div className="header">Selected Movie</div>
-          <div className="body">
-            <div className="poster">
+      <>
+        <div className="header">Selected Movie</div>
+        <div className="body">
+          <div className="poster">
+            {!empty && (
               <img
                 loading="lazy"
                 decoding="async"
                 src={getImgSrc(movie.id)}
                 alt={movie.id}
               />
-            </div>
-            <div className="title">{title}</div>
-            <div className="label">Genres</div>
-            <ol className="genres">
-              {genres.map((genre, i) => (
-                <li className="genre" key={i}>
-                  {genre}
-                </li>
-              ))}
-            </ol>
-            <div className="label">Cast</div>
-            <ol className="cast">
-              {actors.map((actor, i) => (
-                <li className="actor" key={i}>
-                  {actor.name}
-                </li>
-              ))}
-            </ol>
+            )}
           </div>
-        </>
-      )}
+          {!empty ? (
+            <>
+              <div className="title">{title}</div>
+              <div className="label">Genres</div>
+              <ol className="genres">
+                {genres.map((genre, i) => (
+                  <li className="genre" key={i}>
+                    {genre}
+                  </li>
+                ))}
+              </ol>
+              <div className="label">Cast</div>
+              <ol className="cast">
+                {actors.map((actor, i) => (
+                  <li className="actor" key={i}>
+                    {actor.name}
+                  </li>
+                ))}
+              </ol>
+            </>
+          ) : (
+            <div className="no-data">Select a Movie</div>
+          )}
+        </div>
+      </>
     </>
   );
 };
