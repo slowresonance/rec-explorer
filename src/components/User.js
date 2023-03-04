@@ -1,15 +1,22 @@
 import React from "react";
 
-const getImgSrc = (id) => {
-  return `https://raw.githubusercontent.com/mohanvpatta/movie-posters/main/${id}-0.jpg`;
-};
-
 const User = ({ user, selectMovie, selectWatchlist, index }) => {
   let { id, ratings } = user;
 
   const recommendations = ratings.slice(0, 20);
 
   const empty = id === 0;
+
+  const getImgSrc = (id) => {
+    let index = 0;
+    if (user.id === 201 && [28, 33, 56].includes(id)) {
+      index = 1;
+    }
+    if (user.id === 880 && [28, 33, 56].includes(id)) {
+      index = 2;
+    }
+    return `https://raw.githubusercontent.com/mohanvpatta/movie-posters/main/${id}-${index}.jpg`;
+  };
 
   return (
     <>
